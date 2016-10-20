@@ -1,8 +1,9 @@
 package com.shodom.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,24 +27,33 @@ public class BlogController {
     }
     
     @ResponseBody
+    @RequestMapping(value={"/listEntry/{page}"},method=RequestMethod.POST)    
+    public List<Entry> getEntry(@PathVariable("page") Integer page) {
+        return entryRepository.getAll(page);
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "/getEntry/{id}", method = RequestMethod.POST)
+    public Entry getEntry(@PathVariable("id") String id) {
+    	return	entryRepository.getEntry(id);       
+    }
+    
+    @ResponseBody
     @RequestMapping(value={"/addEntry"},method=RequestMethod.POST)    
-    public Entry saveEntry(@RequestBody Entry entry) {
-        entryRepository.addBlog(entry);
-        return entry;
+    public Entry addEntry(@RequestBody Entry entry) {
+        return entryRepository.addEntry(entry);
     }
     
     @ResponseBody
-    @RequestMapping(value={"/listEntry"},method=RequestMethod.GET)    
-    public Entry getEntry() {
-        return new Entry();
+    @RequestMapping(value = "/deleteEntry/{id}", method = RequestMethod.POST)
+    public Entry deleteEntry(@PathVariable("id") String id){
+    	return entryRepository.deleteEntry(id);
     }
     
     @ResponseBody
-    @RequestMapping(value = "/getEntry", method = RequestMethod.POST)
-    public ResponseEntity<Entry> update(@RequestBody Entry entry) {
-
-        // TODO: call persistence layer to update
-        return new ResponseEntity<Entry>(entry, HttpStatus.OK);
+    @RequestMapping(value = "/updateEntry/{id}", method = RequestMethod.POST)
+    public Entry updateEntry(@PathVariable("id") String id, @RequestBody Entry entry){
+    	return entryRepository.updateEntry(id, entry);
     }
     
 }

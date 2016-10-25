@@ -4,7 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="" />
 <meta name="author" content="" />
@@ -18,51 +19,48 @@
 
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 <link rel="stylesheet" th:href="@{/css/core.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap-datepicker3.min.css}" />
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-<script th:src="@{/js/ie-emulation-modes-warning.js}" ></script>
+<script th:src="@{/js/ie-emulation-modes-warning.js}"></script>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script th:src="@{/js/ie10-viewport-bug-workaround.js}"></script>
 
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+<script th:src="@{/locales/bootstrap-datepicker.tr.min.js}"
+	charset="UTF-8"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse visible-xs">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"><img th:src="@{/img/statics.png}"
-					alt="Mevzuat İstatistik" class="img-rounded"
-					style="width: 30px; height: 30px;" /></a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li th:class="${#strings.contains(#httpServletRequest.requestURI,'/ipGirisGun')} ? active : ''"><a th:href="@{'/ipGirisGun'}">İp Sayısı Aynı Gün</a></li>
-					<li th:class="${#strings.contains(#httpServletRequest.requestURI,'/ipGirisSaat')} ? active : ''"><a th:href="@{'/ipGirisSaat'}">İp Sayısı 3 Saatlik Periyot</a></li>
-				</ul>
+
+	<div th:replace="fragments/header :: header">
+		<!-- ============================================================================ -->
+		<!-- This content is only used for static prototyping purposes (natural templates)-->
+		<!-- and is therefore entirely optional, as this markup fragment will be included -->
+		<!-- from "fragments/header.html" at runtime.                                     -->
+		<!-- ============================================================================ -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Static header</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</nav>
+	</div>
 
 	<div class="container-fluid">
 		<div class="row content">
-			<div class="col-sm-3 sidenav hidden-xs">
-				<img th:src="@{/img/statics.png}" alt="Mevzuat İstatistik"
-					class="img-rounded" style="width: 75px; height: 75px;" />
-				<h2>Cadı Avı<small>v1.0(Beta)</small></h2>
-				<ul class="nav nav-pills nav-stacked">
-					<li th:class="${#strings.contains(#httpServletRequest.requestURI,'/ipGirisGun')} ? active : ''"><a th:href="@{'/ipGirisGun'}">İp Sayısı Aynı Gün</a></li>
-					<li th:class="${#strings.contains(#httpServletRequest.requestURI,'/ipGirisSaat')} ? active : ''"><a th:href="@{'/ipGirisSaat'}">İp Sayısı 3 Saatlik Periyot</a></li>
-				</ul>
-			</div>
-
-			<div class="col-sm-9" layout:fragment="content">
+			<div layout:fragment="content">
 				<div class="well">
 					<h4>Dashboard</h4>
 					<p>Some text..</p>
@@ -71,6 +69,10 @@
 			</div>
 		</div>
 	</div>
+
+
+	<div th:replace="fragments/footer :: footer">&copy; 2013 The
+		Static Templates</div>
 
 </body>
 </html>

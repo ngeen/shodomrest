@@ -22,10 +22,13 @@ public class BlogController {
 	@Autowired
 	EntryRepository entryRepository;
 
-    @ResponseBody
+
     @RequestMapping(value={"/","/index"},method=RequestMethod.GET)    
-    public String index() {
-        return "İndex Sayfası Burası";
+    public String index(Model model) {
+    	String tarih = new Date().toString();
+		model.addAttribute("ipGirisleri", "");
+		model.addAttribute("ipTarih", tarih);
+		return "index";
     }
     
     @ResponseBody
@@ -57,14 +60,5 @@ public class BlogController {
     public Entry updateEntry(@PathVariable("id") String id, @RequestBody Entry entry){
     	return entryRepository.updateEntry(id, entry);
     }
-    
-    @RequestMapping("/ipGirisGun")
-	// @RequestMapping({ "/", "/ipGirisGun" })
-	public String ipGirisGunDefault(Model model) {
-		String tarih = new Date().toString();
-		model.addAttribute("ipGirisleri", "");
-		model.addAttribute("ipTarih", tarih);
-		return "ipLoginDay";
-	}
     
 }

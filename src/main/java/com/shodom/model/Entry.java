@@ -13,6 +13,7 @@ public class Entry {
 	private String title;
 	private String content;
 	private String link;
+	private String urlRoute;
 	
 	@CreatedDate
 	private DateTime publishDate;
@@ -55,6 +56,14 @@ public class Entry {
 
 	public void setPublishDate(DateTime publishDate) {
 		this.publishDate = publishDate;
+	}
+
+	public String getUrlRoute() {
+		return urlRoute;
+	}
+
+	public void setUrlRoute(String urlRoute) {
+		this.urlRoute = urlRoute;
 	}
 
 }

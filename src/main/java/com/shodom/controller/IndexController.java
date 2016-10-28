@@ -17,7 +17,7 @@ import com.shodom.repository.EntryRepository;
 
 
 @Controller
-public class BlogController {
+public class IndexController {
 	
 	@Autowired
 	EntryRepository entryRepository;

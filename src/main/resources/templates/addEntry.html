@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout/default">
+<head>
+<title>Share For Freedom</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+
+	<section layout:fragment="content">
+
+		<h1>Form</h1>
+		<form action="#" th:action="@{/addEntry}" th:object="${entry}"
+			method="post">
+			<p>
+				Id: <input type="text" th:field="*{title}" />
+			</p>
+			<p>
+				Message: <input type="text" th:field="*{content}" />
+			</p>
+			<p>
+				Message: <input type="text" th:field="*{link}" />
+			</p>
+			<p>
+				Message: <input type="text" th:field="*{urlRoute}" />
+			</p>
+			<p>
+				<input type="submit" value="Submit" /> <input type="reset"
+					value="Reset" />
+			</p>
+		</form>
+
+	</section>
+
+</body>
+</html>

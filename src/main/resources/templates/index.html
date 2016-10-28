@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	layout:decorator="layout/default">
 <head>
-<title>İp Login</title>
+<title>Share For Freedom</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
@@ -72,83 +72,6 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- div class="panel panel-default">
-			<div class="panel-heading">Arama Kriterleri</div>
-
-			<div class="panel-body">
-
-				<div class="row">
-					<div class="col-md-6">
-						<form id="tarihSec">
-							<label class="radio-inline"> <input type="radio"
-								name="secimRadio" id="secimRd" value="1" checked="checked" /> Güne Göre
-							</label> <label class="radio-inline"> <input type="radio"
-								name="secimRadio" id="secimRd" value="2" /> Aya Göre
-							</label> <label class="radio-inline"> <input type="radio"
-								name="secimRadio" id="secimRd" value="3" /> Yıla Göre
-							</label>
-							<input type="hidden" value="1" id="sayfaId" />
-						</form>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-1">Tarih Seçimi</div>
-					<div class="col-md-2">
-						<div class="input-group date">
-							<input type="text" class="form-control" id="tarihTxt" /><span
-								class="input-group-addon"><i
-								class="glyphicon glyphicon-th"></i></span>
-						</div>
-					</div>
-					<div class="col-md-1">
-						<button class="btn btn-primary" id="arama">Ara</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h1 th:inline="text">[[${ipTarih}]] Tarihine Ait Farklı İp
-					Girişleri</h1>
-			</div>
-
-			<div class="panel-body">
-
-
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>Kullanıcı Adı</th>
-							<th>Tarih</th>
-							<th>Farklı İp Sayısı</th>
-							<th>Detay Bilgileri</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:if="${ipGirisleri.empty}">
-							<td colspan="4">Kayıt Bulunamadı</td>
-						</tr>
-
-						<tr th:each="customer : ${ipGirisleri}">
-
-							<td th:text="${customer.kullaniciAdi}">Kullanıcı Adı</td>
-							<td th:text="${customer.tarih}">Tarih</td>
-							<td th:text="${customer.ipSayisi}">Farklı İp Sayısı</td>
-							<td><a class="btn btn-primary"
-								th:href=" @{'/ipDetay/' + ${customer.kullaniciId} + '/'+ ${customer.tarih}} ">Detay</a></td>
-						</tr>
-
-					</tbody>
-
-				</table>
-
-
-			</div>
-		</div -->
 	</section>
 
 </body>

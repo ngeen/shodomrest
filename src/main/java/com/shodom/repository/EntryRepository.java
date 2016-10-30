@@ -5,6 +5,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -54,7 +57,8 @@ public class EntryRepository {
 	public List<Entry> getAll(int page){
 	 	Query query = new Query();
 	    query.skip(page);
-	    query.limit(10);
+	    query.limit(20);
+	    query.with(new Sort(new Order(Direction.DESC, "publishDate")));
 
 	    List<Entry> results = mongoTemplate.find(query, Entry.class);
 		    

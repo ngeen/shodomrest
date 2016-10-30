@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout/default">
+<head>
+<title>Share For Freedom</title>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+
+	<section layout:fragment="content">
+		<div class="list-group">
+			<div
+				th:each="entry : ${entryList}"
+				class="list-group-item">
+				<span th:text="${entry.title}"></span> 
+				<a class="btn btn-danger pull-right"
+					th:href="@{/entry/delete/{id}(id=${entry.id})}">Delete</a>
+				<a class="btn btn-primary pull-right"
+					th:href="@{/entry/edit/{id}(id=${entry.id})}">Edit</a>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

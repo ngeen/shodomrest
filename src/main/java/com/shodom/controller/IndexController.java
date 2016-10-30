@@ -1,8 +1,8 @@
 package com.shodom.controller;
 
-import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections4.ListUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shodom.model.Entry;
@@ -23,16 +24,15 @@ public class IndexController {
 	EntryRepository entryRepository;
 
 
-    @RequestMapping(value={"/","/index"},method=RequestMethod.GET)    
-    public String index(Model model) {
-    	String tarih = new Date().toString();
-		model.addAttribute("ipGirisleri", "");
-		model.addAttribute("ipTarih", tarih);
+    @RequestMapping(value={"/", "/{page}"},method=RequestMethod.GET)    
+    public String index(@RequestParam(required = false, defaultValue = "0", value="page") Integer page, Model model) {
+    	List<List<Entry>> entries = ListUtils.partition(entryRepository.getAll(page), 4);
+    	model.addAttribute("entries", entries);
 		return "index";
     }
     
     @ResponseBody
-    @RequestMapping(value={"/listEntry/{page}"},method=RequestMethod.POST)    
+    @RequestMapping(value={"/listEntry/{page}"},method=RequestMethod.GET)    
     public List<Entry> getEntry(@PathVariable("page") Integer page) {
         return entryRepository.getAll(page);
     }

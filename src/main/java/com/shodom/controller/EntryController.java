@@ -1,6 +1,7 @@
 package com.shodom.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import com.shodom.repository.EntryRepository;
 import com.shodom.utils.Converters;
 
 @Controller
+@Secured({"ROLE_ADMIN"})
 @RequestMapping(value={"/entry"},method=RequestMethod.GET)
 public class EntryController {
 

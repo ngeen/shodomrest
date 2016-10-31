@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.commons.collections4.ListUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,18 +19,19 @@ import com.shodom.repository.EntryRepository;
 
 
 @Controller
+@Secured({"ROLE_USER"})
 public class IndexController {
 	
 	@Autowired
 	EntryRepository entryRepository;
 
 
-    @RequestMapping(value={"/", "/{page}"},method=RequestMethod.GET)    
+    @RequestMapping(value={"/", "/page/{page}"},method=RequestMethod.GET)    
     public String index(@RequestParam(required = false, defaultValue = "0", value="page") Integer page, Model model) {
     	List<List<Entry>> entries = ListUtils.partition(entryRepository.getAll(page), 4);
     	model.addAttribute("entries", entries);
 		return "index";
-    }
+    }   
     
     @ResponseBody
     @RequestMapping(value={"/listEntry/{page}"},method=RequestMethod.GET)    

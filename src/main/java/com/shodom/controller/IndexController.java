@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.commons.collections4.ListUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +18,7 @@ import com.shodom.repository.EntryRepository;
 
 
 @Controller
-@Secured({"ROLE_USER"})
+//@Secured({"ROLE_USER"})
 public class IndexController {
 	
 	@Autowired

@@ -9,7 +9,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="" />
 <meta name="author" content="" />
-<link rel="icon" href="../fav.ico" />
+<link rel="icon" th:href="@{/ico/fav.ico}" />
 
 <title layout:title-pattern="$CONTENT_TITLE">Task List</title>
 
@@ -19,7 +19,6 @@
 
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 <link rel="stylesheet" th:href="@{/css/core.css}" />
-<link rel="stylesheet" th:href="@{/css/bootstrap-datepicker3.min.css}" />
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -29,12 +28,7 @@
 <script th:src="@{/js/ie10-viewport-bug-workaround.js}"></script>
 
 <script th:src="@{/js/jquery.min.js}"></script>
-<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
-<script th:src="@{/locales/bootstrap-datepicker.tr.min.js}"
-	charset="UTF-8"></script>
 <script th:src="@{/js/bootstrap.min.js}"></script>
-<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-<script th:src="@{/js/main.js}"></script>
 
 
 </head>

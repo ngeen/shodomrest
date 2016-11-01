@@ -14,6 +14,11 @@ public class WebController {
 		return "ah be paşam";
     }
     
+    @RequestMapping(value={"/404"},method=RequestMethod.GET)    
+    public String notFoundPage() {
+		return "notFound";
+    }
+    
     @RequestMapping(value={"/login"},method=RequestMethod.GET)    
     public String userLogin() {
 		return "login";

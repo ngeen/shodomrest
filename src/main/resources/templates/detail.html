@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout/default">
+<head>
+<title>Share For Freedom</title>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8" />
+
+<link
+	rel="stylesheet"
+	th:href="@{/css/detail.css}" />
+</head>
+<body>
+
+	<section layout:fragment="content">
+		<div class="row">
+		<div class="col-md-10">
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe
+					th:src="@{${entry.link}}"
+					src="https://www.youtube.com/embed/reghyn9fmJQ"
+					class="embed-responsive-item" />
+			</div>
+			<div class="page-header">
+				<h1 th:text="${entry.title}">
+					<small th:text="${entry.publishDate}"></small>
+				</h1>
+			</div>
+			
+			<div class="content" th:remove="tag" th:utext="${entry.content}">
+			</div>
+		</div>
+		<div class="col-md-2">Reklam Alanı 2</div>
+		</div>
+	</section>
+
+</body>
+</html>

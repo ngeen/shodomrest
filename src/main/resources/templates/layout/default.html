@@ -19,6 +19,7 @@
 
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 <link rel="stylesheet" th:href="@{/css/core.css}" />
+<link rel="stylesheet" th:href="@{/css/navbar.css}" />
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -38,7 +39,6 @@
 	<div th:replace="fragments/header :: header"></div>
 
 	<div class="container-fluid">
-		<div>
 			<div layout:fragment="content">
 				<div class="well">
 					<h4>Dashboard</h4>
@@ -46,7 +46,6 @@
 				</div>
 
 			</div>
-		</div>
 	</div>
 
 

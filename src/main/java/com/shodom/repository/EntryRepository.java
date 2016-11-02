@@ -53,6 +53,13 @@ public class EntryRepository {
 
 		return mongoTemplate.findOne(q, Entry.class);
 	}
+	
+	public Entry getEntryByUrlRoute(String urlRoute){
+		Query q = new Query();
+		q.addCriteria(Criteria.where("urlRoute").is(urlRoute));
+
+		return mongoTemplate.findOne(q, Entry.class);
+	}
 
 	public List<Entry> getAll(int page){
 	 	Query query = new Query();

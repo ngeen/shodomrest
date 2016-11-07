@@ -12,6 +12,7 @@ public class WebUser {
 	@Id
 	private String id;
 	private String userName;
+	private String userMail;
 	private String password;
 	private List<GrantedAuthority> userRole;
 
@@ -45,5 +46,13 @@ public class WebUser {
 
 	public void setUserRole(List<GrantedAuthority> userRole) {
 		this.userRole = userRole;
+	}
+
+	public String getUserMail() {
+		return userMail;
+	}
+
+	public void setUserMail(String userMail) {
+		this.userMail = userMail;
 	}
 }

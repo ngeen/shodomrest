@@ -16,23 +16,31 @@
 
 	<section layout:fragment="content">
 		<div class="row">
-		<div class="col-md-10">
-			<div class="embed-responsive embed-responsive-16by9">
-				<iframe
-					th:src="@{${entry.link}}"
-					src="https://www.youtube.com/embed/reghyn9fmJQ"
-					class="embed-responsive-item" />
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe
+						th:src="@{${entry.link}}"
+						src="https://www.youtube.com/embed/reghyn9fmJQ"
+						class="embed-responsive-item" />
+				</div>
+				<div class="page-header">
+					<h1 th:text="${entry.title}">
+						<small th:text="${entry.publishDate}"></small>
+					</h1>
+				</div>
+				<div class="row">
+					<div class="col-md-8">
+
+						<div
+							class="content"
+							th:remove="tag"
+							th:utext="${entry.content}"></div>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
 			</div>
-			<div class="page-header">
-				<h1 th:text="${entry.title}">
-					<small th:text="${entry.publishDate}"></small>
-				</h1>
-			</div>
-			
-			<div class="content" th:remove="tag" th:utext="${entry.content}">
-			</div>
-		</div>
-		<div class="col-md-2">Reklam Alanı 2</div>
+			<div class="col-md-2"></div>
 		</div>
 	</section>
 

@@ -14,14 +14,14 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" th:href="@{/}"><img
-					th:src="@{/img/shodom.png}" alt="shodom" />
-					HODOM
+				<a class="navbar-brand" th:href="@{/}"><!--img
+					th:src="@{/img/shodom.png}" alt="shodom" /-->
+					SHODOM
 					</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#" th:href="@{/}">Home</a></li>
+					<li class="active"><a href="#" th:href="@{/}">Ana Sayfa</a></li>
 					<li><a href="#" th:href="@{/message}">Messages</a></li>
 					<li><a href="#" th:href="@{/task}">Tasks</a></li>
 					<li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')"><a
@@ -36,10 +36,12 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li sec:authorize="!isAuthenticated()"><a href="/signin"
-						th:href="@{/login}">Sign in</a></li>
+					<li sec:authorize="!isAuthenticated()"><a
+						th:href="@{/login}">Giriş</a></li>
+					<li sec:authorize="!isAuthenticated()"><a
+						th:href="@{/register}">Kayıt Ol</a></li>
 					<li sec:authorize="isAuthenticated()"><a href="/logout"
-						th:href="@{/logout}">Logout</a></li>
+						th:href="@{/logout}">Çıkış</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

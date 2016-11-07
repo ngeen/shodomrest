@@ -5,6 +5,7 @@
 <title>Share For Freedom</title>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script th:src="@{/js/tinyMceInit.js}"></script>
+<script th:src="@{/js/addEntry.js}"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
@@ -35,8 +36,21 @@
 			<input type="submit" value="Submit" class="btn btn-primary" /> <input
 				type="reset" value="Reset" class="btn btn-primary" />
 		</form>
+		
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe
+						id="youtubeVideo"
+						class="embed-responsive-item" />
+				</div>
+			</div>
+		</div>
 
 	</section>
+	
+			
 
 </body>
 </html>

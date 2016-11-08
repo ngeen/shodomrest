@@ -6,16 +6,15 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Entry {
+public class Comment {
 
 	@Id
 	private String id;
-	private String title;
-	private String content;
-	private String link;
-	private String urlRoute;
+	private String entryId;
+	private String userId;
+	private String comment;
 	private String showFlg;
-	
+
 	@CreatedDate
 	private DateTime publishDate;
 
@@ -27,28 +26,28 @@ public class Entry {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getEntryId() {
+		return entryId;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setEntryId(String entryId) {
+		this.entryId = entryId;
 	}
 
-	public String getContent() {
-		return content;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getLink() {
-		return link;
+	public String getComment() {
+		return comment;
 	}
 
-	public void setLink(String link) {
-		this.link = link;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	public DateTime getPublishDate() {
@@ -59,14 +58,6 @@ public class Entry {
 		this.publishDate = publishDate;
 	}
 
-	public String getUrlRoute() {
-		return urlRoute;
-	}
-
-	public void setUrlRoute(String urlRoute) {
-		this.urlRoute = urlRoute;
-	}
-
 	public String getShowFlg() {
 		return showFlg;
 	}
@@ -74,5 +65,4 @@ public class Entry {
 	public void setShowFlg(String showFlg) {
 		this.showFlg = showFlg;
 	}
-
 }

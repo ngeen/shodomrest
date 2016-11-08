@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html
-	xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
 	layout:decorator="layout/default">
 <head>
 <title>Share For Freedom</title>
-<meta
-	http-equiv="Content-Type"
-	content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<link
-	rel="stylesheet"
-	th:href="@{/css/detail.css}" />
+<link rel="stylesheet" th:href="@{/css/detail.css}" />
 </head>
 <body>
 
@@ -19,8 +14,7 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe
-						th:src="@{${entry.link}}"
+					<iframe th:src="@{${entry.link}}"
 						src="https://www.youtube.com/embed/reghyn9fmJQ"
 						class="embed-responsive-item" />
 				</div>
@@ -32,10 +26,26 @@
 				<div class="row">
 					<div class="col-md-8">
 
-						<div
-							class="content"
-							th:remove="tag"
-							th:utext="${entry.content}"></div>
+						<div class="content" th:remove="tag" th:utext="${entry.content}"></div>
+						<h4>Yorumlar</h4>
+						<div style="border-top: 1px solid #999; padding-top: 20px" class="container-fluid">
+
+							<div class="row">
+							hjlkjshdf lkjahdf akljdfh sakljdfh skdjfh sldafkjh slkdflsakjdh sdf 
+							 sd sdf asdfhj laskjd sdkljhf lkasjhf lskadhf klsadhf sklajhf slkjfhsa 
+							 sa dfkasj şlkasdjf şlksadjf aşslkdjf şaslkjdf şlsakj saşdklfj aslşdfsad
+							 sd sadlkjf sşalkjf şsldkjfsşaldfjasşlkjfhgşldkjgsajfşasdk sdşkjf şsdaf
+							 sdkf sdlakşfjasş sdkflajfdlşakf aslşfdkj asşldkfjas lşdkfjsaşldj sdşlkfj
+							</div>
+							<div class="row">
+							hjlkjshdf lkjahdf akljdfh sakljdfh skdjfh sldafkjh slkdflsakjdh sdf 
+							 sd sdf asdfhj laskjd sdkljhf lkasjhf lskadhf klsadhf sklajhf slkjfhsa 
+							 sa dfkasj şlkasdjf şlksadjf aşslkdjf şaslkjdf şlsakj saşdklfj aslşdfsad
+							 sd sadlkjf sşalkjf şsldkjfsşaldfjasşlkjfhgşldkjgsajfşasdk sdşkjf şsdaf
+							 sdkf sdlakşfjasş sdkflajfdlşakf aslşfdkj asşldkfjas lşdkfjsaşldj sdşlkfj
+							</div>
+
+						</div>
 					</div>
 					<div class="col-md-4"></div>
 				</div>

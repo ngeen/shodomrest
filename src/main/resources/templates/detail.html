@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <link rel="stylesheet" th:href="@{/css/detail.css}" />
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
+<script th:src="@{/js/comment.js}"></script>
 </head>
 <body>
 
@@ -13,41 +15,45 @@
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
+				<input type="hidden" id="entryId" th:value="${entry.id}" />
 				<div class="embed-responsive embed-responsive-16by9">
 					<iframe th:src="@{${entry.link}}"
 						src="https://www.youtube.com/embed/reghyn9fmJQ"
 						class="embed-responsive-item" />
 				</div>
 				<div class="page-header">
-					<h1 th:text="${entry.title}">
-						<small th:text="${entry.publishDate}"></small>
-					</h1>
+					<h1 th:text="${entry.title}"></h1>
+					<small
+						th:text="${#calendars.format(entry.publishDate,'dd/MM/yyyy')}"></small>
+					<i class="fa fa-star-o fa-lg" style="color: silver;"></i>
+					<i class="fa fa-star fa-lg" style="color: gold;"></i>
 				</div>
 				<div class="row">
-					<div class="col-md-8">
+					<div class="col-md-12">
 
 						<div class="content" th:remove="tag" th:utext="${entry.content}"></div>
-						<h4>Yorumlar</h4>
-						<div style="border-top: 1px solid #999; padding-top: 20px" class="container-fluid">
-
-							<div class="row">
-							hjlkjshdf lkjahdf akljdfh sakljdfh skdjfh sldafkjh slkdflsakjdh sdf 
-							 sd sdf asdfhj laskjd sdkljhf lkasjhf lskadhf klsadhf sklajhf slkjfhsa 
-							 sa dfkasj şlkasdjf şlksadjf aşslkdjf şaslkjdf şlsakj saşdklfj aslşdfsad
-							 sd sadlkjf sşalkjf şsldkjfsşaldfjasşlkjfhgşldkjgsajfşasdk sdşkjf şsdaf
-							 sdkf sdlakşfjasş sdkflajfdlşakf aslşfdkj asşldkfjas lşdkfjsaşldj sdşlkfj
+						<h3>Yorum Yaz</h3>
+						<div style="border-top: 1px solid #999; padding-top: 20px"
+							class="container-fluid">
+							<div class="form-group">
+								<textarea id="comment" class="form-control" rows="5"></textarea>
+								<button class="btn btn-primary" onclick="postComment();">GÖNDER</button>
 							</div>
-							<div class="row">
-							hjlkjshdf lkjahdf akljdfh sakljdfh skdjfh sldafkjh slkdflsakjdh sdf 
-							 sd sdf asdfhj laskjd sdkljhf lkasjhf lskadhf klsadhf sklajhf slkjfhsa 
-							 sa dfkasj şlkasdjf şlksadjf aşslkdjf şaslkjdf şlsakj saşdklfj aslşdfsad
-							 sd sadlkjf sşalkjf şsldkjfsşaldfjasşlkjfhgşldkjgsajfşasdk sdşkjf şsdaf
-							 sdkf sdlakşfjasş sdkflajfdlşakf aslşfdkj asşldkfjas lşdkfjsaşldj sdşlkfj
+							<div class="media" th:each="comment : ${comments}">
+								<div class="media-left">
+									<i class="fa fa-user-o fa-3x" aria-hidden="true"></i>
+								</div>
+								<div class="media-body">
+									<h4 class="media-heading" th:text="${comment.userName}">John
+										Doe</h4>
+									<p th:remove="tag" th:utext="${comment.comment}">Lorem
+										ipsum...</p>
+								</div>
 							</div>
 
 						</div>
 					</div>
-					<div class="col-md-4"></div>
+					<!--  div class="col-md-4"></div -->
 				</div>
 			</div>
 			<div class="col-md-2"></div>

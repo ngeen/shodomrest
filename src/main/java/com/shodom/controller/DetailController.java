@@ -1,5 +1,7 @@
 package com.shodom.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +17,19 @@ public class DetailController {
 	@Autowired
 	EntryRepository entryRepository;
 	
+	@Autowired
+	CommentController commentController;
+	
+	@Autowired
+	FavoriteController favoriteController;
+	
+	
 	@GetMapping("/detail/{urlRoute}") 
-    public String editEntry(@PathVariable("urlRoute") String urlRoute,Model model) {
+    public String detailEntry(@PathVariable("urlRoute") String urlRoute,Model model) {
 		Entry e = entryRepository.getEntryByUrlRoute(urlRoute);
 		model.addAttribute("entry", e);
+		model.addAttribute("comments", commentController.comments(e.getId()));
+		
 		return "detail";
     }
 }

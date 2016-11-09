@@ -11,7 +11,7 @@ public class Comment {
 	@Id
 	private String id;
 	private String entryId;
-	private String userId;
+	private String userName;
 	private String comment;
 	private String showFlg;
 
@@ -32,14 +32,6 @@ public class Comment {
 
 	public void setEntryId(String entryId) {
 		this.entryId = entryId;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 
 	public String getComment() {
@@ -65,4 +57,13 @@ public class Comment {
 	public void setShowFlg(String showFlg) {
 		this.showFlg = showFlg;
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 }

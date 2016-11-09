@@ -21,6 +21,7 @@ public class CommentRepository {
 	MongoTemplate mongoTemplate;
 	
 	public Comment addComment(Comment e) {
+		e.setShowFlg("0");
 		mongoTemplate.insert(e);
 		return e;
 	}
@@ -47,29 +48,24 @@ public class CommentRepository {
 
 		return mongoTemplate.findOne(q, Comment.class);
 	}
-	
-	public Comment getCommentByUrlRoute(String urlRoute){
-		Query q = new Query();
-		q.addCriteria(Criteria.where("urlRoute").is(urlRoute));
 
-		return mongoTemplate.findOne(q, Comment.class);
-	}
-
-	public List<Comment> getAllComments(int page){
+	public List<Comment> getAllComments(int page, String entryId){
 	 	Query query = new Query();
-	    query.skip(page);
+	 	query.skip(page);
 	    query.limit(20);
+	 	query.addCriteria(Criteria.where("entryId").is(entryId));
 	    query.with(new Sort(new Order(Direction.DESC, "publishDate")));
-
 	    List<Comment> results = mongoTemplate.find(query, Comment.class);
 		    
 		return results;
 	}
 	
-	public List<Comment> getAllShowComments(int page){
+	public List<Comment> getAllShowComments(int page, String entryId){
 	 	Query query = new Query();
 	    query.skip(page);
 	    query.limit(20);
+	    query.addCriteria(Criteria.where("showFlg").is("1"));
+	    query.addCriteria(Criteria.where("entryId").is(entryId));
 	    query.with(new Sort(new Order(Direction.DESC, "publishDate")));
 
 	    List<Comment> results = mongoTemplate.find(query, Comment.class);

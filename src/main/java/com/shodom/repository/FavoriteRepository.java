@@ -1,5 +1,7 @@
 package com.shodom.repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -20,6 +22,13 @@ public class FavoriteRepository {
 		q.addCriteria(Criteria.where("entryId").is(entryId));
 		
 		return mongoTemplate.findOne(q, Favorite.class);
+	}
+	
+	public List<Favorite> getFavoriteList(String userId){
+		Query q = new Query();
+		q.addCriteria(Criteria.where("userId").is(userId));
+		
+		return mongoTemplate.find(q, Favorite.class);
 	}
 	
 	public Favorite addFavorite(Favorite fav){

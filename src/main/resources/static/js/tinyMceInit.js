@@ -1,5 +1,6 @@
 tinymce.init({
 	selector : 'textarea',
 	entity_encoding : "raw",
-	 menubar: false
+	menubar : false,
+	forced_root_block : ""
 });

@@ -23,7 +23,8 @@ public class ShodomSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.formLogin().loginPage("/login").defaultSuccessUrl("/").and().logout().and().authorizeRequests()
 				.antMatchers("/", "/index", "/login", "/logout", "/403", "/css/**", "/js/**", "/fonts/**", "/ico/**",
-						"/locales/**", "/img/**", "/detail/**", "/register","/getUser/**", "/addUser","/postComment/**")
+						"/locales/**", "/img/**", "/detail/**", "/register", "/getUser/**", "/addUser",
+						"/postComment/**")
 				.permitAll().anyRequest().authenticated().and().logout().logoutSuccessUrl("/").and().exceptionHandling()
 				.accessDeniedPage("/403").and().csrf().disable();
 

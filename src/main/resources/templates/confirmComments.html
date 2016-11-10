@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	layout:decorator="layout/default">
+<head>
+<title>Share For Freedom</title>
+<link
+	rel="stylesheet"
+	th:href="@{/css/font-awesome.min.css}" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+
+	<section layout:fragment="content">
+		<div class="media panel panel-success row" th:each="comment : ${comments}">
+			<div class="media-left">
+				<i class="fa fa-user-o fa-3x" aria-hidden="true"></i>
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading" th:text="${comment.userName}">John
+					Doe</h4>
+				<p th:remove="tag" th:utext="${comment.comment}">Lorem ipsum...</p>
+				<a class="btn btn-primary pull-right" th:href="@{/confirmComment/{id}(id=${comment.id})}">Onayla</a>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

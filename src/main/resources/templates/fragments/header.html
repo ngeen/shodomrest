@@ -14,16 +14,14 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" th:href="@{/}"><!--img
-					th:src="@{/img/shodom.png}" alt="shodom" /-->
-					SHODOM
-					</a>
+				<a class="navbar-brand" th:href="@{/}"> <!--img
+					th:src="@{/img/shodom.png}" alt="shodom" /--> SHODOM
+				</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li sec:authorize="isAuthenticated()" class="active"><a href="#" th:href="@{/favorite/list}">Favoriler</a></li>
-					<!-- li><a href="#" th:href="@{/message}">Messages</a></li>
-					<li><a href="#" th:href="@{/task}">Tasks</a></li-->
+				<!-- ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()" class="active"><a
+						href="#" th:href="@{/favorite/list}">Favoriler</a></li>
 					<li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')"><a
 						href="#" class="dropdown-toggle" data-toggle="dropdown"
 						role="button" aria-haspopup="true" aria-expanded="false">Entry
@@ -33,11 +31,27 @@
 							<li><a href="/entry/add">Add Entry</a></li>
 							<li><a href="/entry">Entry List</a></li>
 						</ul></li>
-				</ul>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/confirmComments}">
+						Onaylanacak Yorumlar
+					</a>
+					</li>
+				</ul-->
 
 				<ul class="nav navbar-nav navbar-right">
-					<li sec:authorize="!isAuthenticated()"><a
-						th:href="@{/login}">Giriş</a></li>
+					<li sec:authorize="isAuthenticated()"><a
+						href="#" th:href="@{/favorite/list}">Favoriler</a></li>
+					<li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')"><a
+						href="#" class="dropdown-toggle" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">Entry
+							<span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="/entry/add">Add Entry</a></li>
+							<li><a href="/entry">Entry List</a></li>
+						</ul></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a
+						th:href="@{/confirmComments}"> Onaylanacak Yorumlar </a></li>
+					<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Giriş</a></li>
 					<li sec:authorize="!isAuthenticated()"><a
 						th:href="@{/register}">Kayıt Ol</a></li>
 					<li sec:authorize="isAuthenticated()"><a href="/logout"

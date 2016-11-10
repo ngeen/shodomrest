@@ -32,7 +32,7 @@ public class CommentRepository {
 		return mongoTemplate.findAndRemove(q, Comment.class);
 	}
 
-	public Comment showComment(String id) {
+	public Comment confirmComment(String id) {
 		Query q = new Query();
 		q.addCriteria(Criteria.where("_id").is(id));
 
@@ -49,18 +49,18 @@ public class CommentRepository {
 		return mongoTemplate.findOne(q, Comment.class);
 	}
 
-	public List<Comment> getAllComments(int page, String entryId){
+	public List<Comment> getAllComments(){
 	 	Query query = new Query();
-	 	query.skip(page);
-	    query.limit(20);
-	 	query.addCriteria(Criteria.where("entryId").is(entryId));
+	 	//query.skip(page);
+	    //query.limit(20);
+	 	query.addCriteria(Criteria.where("showFlg").is("0"));
 	    query.with(new Sort(new Order(Direction.DESC, "publishDate")));
 	    List<Comment> results = mongoTemplate.find(query, Comment.class);
 		    
 		return results;
 	}
 	
-	public List<Comment> getAllShowComments(int page, String entryId){
+	public List<Comment> getAllConfirmedComments(int page, String entryId){
 	 	Query query = new Query();
 	    query.skip(page);
 	    query.limit(20);

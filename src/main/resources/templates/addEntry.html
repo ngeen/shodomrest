@@ -6,6 +6,7 @@
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script th:src="@{/js/tinyMceInit.js}"></script>
 <script th:src="@{/js/addEntry.js}"></script>
+<script th:src="@{/js/videoSource.js}"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
@@ -20,13 +21,23 @@
 				<label for="title">Title</label> <input th:field="*{title}"
 					type="text" class="form-control" id="title"
 					placeholder="Enter Title" />
-				<!-- small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small -->
 			</div>
 			<div class="form-group">
 				<label for="content">Content</label>
 				<textarea rows="5" th:field="*{content}" class="form-control"
 					id="content" placeholder="Enter Content"></textarea>
-				<!-- small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small -->
+			</div>
+			<div class="form-group">
+				<div class="btn-group">
+					<button type="button" class="btn btn-success dropdown-toggle"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Video Adresi <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a onclick="changeSource(1);">youtube</a></li>
+						<li><a onclick="changeSource(2);">vimeo</a></li>
+					</ul>
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="link">Link</label> <input th:field="*{link}" type="text"
@@ -36,21 +47,19 @@
 			<input type="submit" value="Submit" class="btn btn-primary" /> <input
 				type="reset" value="Reset" class="btn btn-primary" />
 		</form>
-		
+
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4">
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe
-						id="youtubeVideo"
-						class="embed-responsive-item" />
+					<iframe id="youtubeVideo" class="embed-responsive-item" />
 				</div>
 			</div>
 		</div>
 
 	</section>
-	
-			
+
+
 
 </body>
 </html>

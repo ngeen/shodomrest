@@ -26,7 +26,9 @@ public class EntryController {
 	
 	@GetMapping({"","/{page}"})
 	public String listEntries(@RequestParam(required = false, defaultValue = "0", value="page") Integer page, Model model){
-		model.addAttribute("entryList",entryRepository.getAll(page));
+		int recordCount = 20;
+    	int realPage = page*recordCount;
+		model.addAttribute("entryList",entryRepository.getAll(realPage, recordCount));
 		return "entryList";
 	}
 	
@@ -61,6 +63,7 @@ public class EntryController {
 	
 	@PostMapping("/editPost")
     public String editEntryAction(@ModelAttribute Entry entry) {
+		entry.setUrlRoute(Converters.toEnglish(entry.getTitle()));
 		entryRepository.updateEntry(entry.getId(), entry);
         return "redirect:/entry";
     }

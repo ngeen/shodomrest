@@ -27,7 +27,9 @@ public class IndexController {
 
     @RequestMapping(value={"/", "/page/{page}"},method=RequestMethod.GET)    
     public String index(@RequestParam(required = false, defaultValue = "0", value="page") Integer page, Model model) {
-    	List<List<Entry>> entries = ListUtils.partition(entryRepository.getAll(page), 4);
+    	int recordCount = 20;
+    	int realPage = page*recordCount;
+    	List<List<Entry>> entries = ListUtils.partition(entryRepository.getAll(realPage, recordCount), 4);
     	model.addAttribute("entries", entries);
 		return "index";
     }   
@@ -35,7 +37,9 @@ public class IndexController {
     @ResponseBody
     @RequestMapping(value={"/listEntry/{page}"},method=RequestMethod.GET)    
     public List<Entry> getEntry(@PathVariable("page") Integer page) {
-        return entryRepository.getAll(page);
+    	int recordCount = 20;
+    	int realPage = page*recordCount;
+        return entryRepository.getAll(realPage, recordCount);
     }
     
     @ResponseBody

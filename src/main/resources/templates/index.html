@@ -1,36 +1,59 @@
 <!DOCTYPE html>
-<html
-	xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
 	layout:decorator="layout/default">
 <head>
 <title>Share For Freedom</title>
-<meta
-	http-equiv="Content-Type"
-	content="text/html; charset=UTF-8" />
-	
-	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script th:src="@{/js/ajaxLoad.js}"></script>
 <link rel="stylesheet" th:href="@{/css/index.css}" />
 
 </head>
 <body>
 
 	<section layout:fragment="content">
-
-		<div class="row" th:each="entryList : ${entries}">
+		<!-- div class="row" th:each="entryList : ${entries}" id="posts">
 			<div class="col-sm-6 col-md-3" th:each="entry : ${entryList}">
 				<div class="box">
 					<div class="info">
-						<iframe th:src="@{${entry.link}}" src="https://www.youtube.com/embed/reghyn9fmJQ" />
+						<iframe th:src="@{${entry.link}}"
+							src="https://www.youtube.com/embed/reghyn9fmJQ" />
 					</div>
 					<div class="caption">
 						<p th:text="${entry.title}"></p>
 						<p>
-							<a th:href="@{/detail/{url}(url=${entry.urlRoute})}" href="#" class="btn btn-primary">Detay</a>
+							<a th:href="@{/detail/{url}(url=${entry.urlRoute})}" href="#"
+								class="btn btn-primary">Detay</a>
 						</p>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div-->
+		
+		
+
+		<!-- p id="loading">
+			<img src="images/loading.gif"/>
+		</p-->
+		
+		<script id="rowTemplate">
+			<div class="row" id="posts">{0}</div>
+		</script>
+
+		<script id="entryTemplate">
+			<div class="col-sm-6 col-md-3"><div class="box"><div class="info">
+					<iframe src="{0}" />
+				</div>
+				<div class="caption">
+					<p>{1}</p>
+					<p>
+						<a href="/detail/{2}"
+							class="btn btn-primary">Detay</a>
+					</p>
+				</div>
+			</div>
+			</div>
+		</script>
 	</section>
 
 </body>

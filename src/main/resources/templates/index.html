@@ -36,22 +36,27 @@
 			<img src="images/loading.gif"/>
 		</p-->
 		
-		<script id="rowTemplate">
+		<script type="text/html" id="rowTemplate">
 			<div class="row" id="posts">{0}</div>
 		</script>
 
-		<script id="entryTemplate">
-			<div class="col-sm-6 col-md-3"><div class="box"><div class="info">
-					<iframe src="{0}" />
+		<script type="text/html" id="entryTemplate">
+			<div class="col-sm-6 col-md-3">
+				<div class="box">
+					<div class="info">
+						<iframe src="{0}" />
+					</div>
+					<div class="caption">
+						<p>{1}</p>
+						<div class="bottomleft">
+							<a href="/detail/{2}"
+								class="btn btn-primary">Detay</a>
+						</div>
+						<!--div class="bottomright">
+						<p>{3} izlenme</p>
+						</div-->
+					</div>
 				</div>
-				<div class="caption">
-					<p>{1}</p>
-					<p>
-						<a href="/detail/{2}"
-							class="btn btn-primary">Detay</a>
-					</p>
-				</div>
-			</div>
 			</div>
 		</script>
 	</section>

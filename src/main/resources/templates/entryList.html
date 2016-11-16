@@ -15,7 +15,7 @@
 		<div class="list-group">
 			<div
 				th:each="entry : ${entryList}"
-				class="list-group-item">
+				class="list-group-item" th:classappend="${entry.showFlg} ? list-group-item-success : list-group-item-info">
 				<span th:text="${entry.title}"></span> 
 				<a class="btn btn-danger pull-right"
 					th:href="@{/entry/delete/{id}(id=${entry.id})}">Delete</a>

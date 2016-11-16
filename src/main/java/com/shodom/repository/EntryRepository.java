@@ -44,6 +44,7 @@ public class EntryRepository {
 		update.set("content", e.getContent());
 		update.set("link", e.getLink());
 		update.set("urlRoute", e.getUrlRoute());
+		update.set("showFlg", e.getShowFlg());
 
 		return mongoTemplate.findAndModify(q, update, Entry.class);
 	}
@@ -62,13 +63,25 @@ public class EntryRepository {
 		return mongoTemplate.findOne(q, Entry.class);
 	}
 
-	public List<Entry> getAll(int recordFrom, int recordCount){
+	public List<Entry> getAllPublished(int recordFrom, int recordCount){
 		
-	 	Query query = new Query();
+	 	Query query = new Query();	 	
 	    query.skip(recordFrom);
 	    query.limit(recordCount);
 	    query.with(new Sort(new Order(Direction.DESC, "publishDate")));
-
+	    query.addCriteria(Criteria.where("showFlg").is(true));
+	    
+	    List<Entry> results = mongoTemplate.find(query, Entry.class);
+		    
+		return results;
+	}
+	
+	public List<Entry> getAll(int recordFrom, int recordCount){
+		
+	 	Query query = new Query();	 	
+	    query.skip(recordFrom);
+	    query.limit(recordCount);
+	    query.with(new Sort(new Order(Direction.ASC, "showFlg"),new Order(Direction.DESC, "publishDate")));
 	    List<Entry> results = mongoTemplate.find(query, Entry.class);
 		    
 		return results;

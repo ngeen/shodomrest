@@ -14,7 +14,7 @@ public class Entry {
 	private String content;
 	private String link;
 	private String urlRoute;
-	private String showFlg;
+	private Boolean showFlg;
 	
 	@CreatedDate
 	private DateTime publishDate;
@@ -67,11 +67,11 @@ public class Entry {
 		this.urlRoute = urlRoute;
 	}
 
-	public String getShowFlg() {
+	public Boolean getShowFlg() {
 		return showFlg;
 	}
 
-	public void setShowFlg(String showFlg) {
+	public void setShowFlg(Boolean showFlg) {
 		this.showFlg = showFlg;
 	}
 

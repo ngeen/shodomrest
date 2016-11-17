@@ -4,22 +4,38 @@
 </head>
 <body>
 	<!-- Fixed navbar -->
-	<nav class="navbar navbar-custom navbar-fixed-top" th:fragment="header">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" th:href="@{/}"> <!--img
-					th:src="@{/img/shodom.png}" alt="shodom" /--> SHODOM
-				</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<!-- ul class="nav navbar-nav">
+	<div class="header w3l" th:fragment="header">
+		<div class="fixed-header">
+			<div class="navbar-wrapper">
+				<div class="container">
+					<nav class="navbar navbar-inverse navbar-static-top">
+						<div class="navbar-header">
+							<button
+								type="button"
+								class="navbar-toggle collapsed"
+								data-toggle="collapse"
+								data-target="#navbar"
+								aria-expanded="false"
+								aria-controls="navbar">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<div class="logo">
+								<h1>
+									<a
+										class="navbar-brand"
+										href="/">SHODOM</a>
+								</h1>
+							</div>
+						</div>
+						<div
+							id="navbar"
+							class="navbar-collapse collapse">
+							<nav
+								class="cl-effect-16"
+								id="cl-effect-16">
+								<!-- ul class="nav navbar-nav">
 					<li sec:authorize="isAuthenticated()" class="active"><a
 						href="#" th:href="@{/favorite/list}">Favoriler</a></li>
 					<li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')"><a
@@ -37,30 +53,43 @@
 					</li>
 				</ul-->
 
-				<ul class="nav navbar-nav navbar-right">
-					<li sec:authorize="isAuthenticated()"><a
-						href="#" th:href="@{/favorite/list}">Favoriler</a></li>
-					<li class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')"><a
-						href="#" class="dropdown-toggle" data-toggle="dropdown"
-						role="button" aria-haspopup="true" aria-expanded="false">Entry
-							<span class="caret"></span>
-					</a>
-						<ul class="dropdown-menu">
-							<li><a href="/entry/add">Add Entry</a></li>
-							<li><a href="/entry">Entry List</a></li>
-						</ul></li>
-					<li sec:authorize="hasRole('ROLE_ADMIN')"><a
-						th:href="@{/confirmComments}"> Onaylanacak Yorumlar </a></li>
-					<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Giriş</a></li>
-					<li sec:authorize="!isAuthenticated()"><a
-						th:href="@{/register}">Kayıt Ol</a></li>
-					<li sec:authorize="isAuthenticated()"><a href="/logout"
-						th:href="@{/logout}">Çıkış</a></li>
-				</ul>
+								<ul class="nav navbar-nav">
+									<li sec:authorize="isAuthenticated()"><a
+										href="#"
+										th:href="@{/favorite/list}">Favoriler</a></li>
+									<li
+										class="dropdown"
+										sec:authorize="hasRole('ROLE_ADMIN')"><a
+										href="#"
+										class="dropdown-toggle"
+										data-toggle="dropdown"
+										role="button"
+										aria-haspopup="true"
+										aria-expanded="false">Entry <span class="caret"></span>
+									</a>
+										<ul class="dropdown-menu">
+											<li><a href="/entry/add">Add Entry</a></li>
+											<li><a href="/entry">Entry List</a></li>
+										</ul></li>
+									<li sec:authorize="hasRole('ROLE_ADMIN')"><a
+										th:href="@{/confirmComments}"> Onaylanacak Yorumlar </a></li>
+									<li sec:authorize="!isAuthenticated()"><a
+										th:href="@{/login}">Giriş</a></li>
+									<li sec:authorize="!isAuthenticated()"><a
+										th:href="@{/register}">Kayıt Ol</a></li>
+									<li sec:authorize="isAuthenticated()"><a
+										href="/logout"
+										th:href="@{/logout}">Çıkış</a></li>
+								</ul>
+							</nav>
+
+						</div>
+						<div class="clearfix"></div>
+					</nav>
+				</div>
 			</div>
-			<!--/.nav-collapse -->
 		</div>
-	</nav>
+	</div>
 
 </body>
 </html>

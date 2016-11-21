@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var win = $(window);
 	var page = 0;
-	var finish = true;
+	var finish = false;
 
 	var entryTemp = function(entry) {
 		var text = $("#entryTemplate").html();
@@ -23,7 +23,7 @@ $(document).ready(function() {
 	};
 
 	var loadEntry = function() {
-		if(finish){
+		if(!finish){
 			$.ajax({
 				url : '/listEntry/' + page,
 				dataType : 'json',
@@ -45,8 +45,8 @@ $(document).ready(function() {
 					if (data.length > 0) {
 						page++;
 					} else {
-						//$('#loading').hide();
-						finish = false;
+						$('#loading').hide();
+						finish = true;
 					}
 				}
 			});	
@@ -56,8 +56,8 @@ $(document).ready(function() {
 	// Each time the user scrolls
 	win.scroll(function() {
 		// End of the document reached?
-		if ($(document).height() - win.height() == win.scrollTop()) {
-			//$('#loading').show();
+		if ($(document).height() - win.height() == win.scrollTop() && !finish) {
+			$('#loading').show();
 			loadEntry();
 		}
 	});

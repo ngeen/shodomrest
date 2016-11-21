@@ -14,6 +14,7 @@ public class WebUser {
 	private String userName;
 	private String userMail;
 	private String password;
+	private String response;
 	private List<GrantedAuthority> userRole;
 
 	public String getId() {
@@ -54,5 +55,13 @@ public class WebUser {
 
 	public void setUserMail(String userMail) {
 		this.userMail = userMail;
+	}
+
+	public String getResponse() {
+		return response;
+	}
+
+	public void setResponse(String response) {
+		this.response = response;
 	}
 }

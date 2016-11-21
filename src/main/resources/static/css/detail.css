@@ -5,3 +5,18 @@ p {
     color: #242424;
     font-family: "PT Sans",sans-serif;
 }
+
+.myrow {
+    font-size: 0;
+}
+.myrow > * {
+    float: none;
+    display: inline-block;
+    font-size: 14px; /* if using LESS it's quicker to just use @font-size-base */
+}
+.myrow > *:last-child {
+    vertical-align: center;
+}
+.myrow p:last-child {
+    margin-bottom: 0; /* optional */
+}

@@ -14,6 +14,7 @@ public class Comment {
 	private String userName;
 	private String comment;
 	private String showFlg;
+	private String response;
 
 	@CreatedDate
 	private DateTime publishDate;
@@ -64,6 +65,14 @@ public class Comment {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getResponse() {
+		return response;
+	}
+
+	public void setResponse(String response) {
+		this.response = response;
 	}
 	
 }

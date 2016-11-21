@@ -1,13 +1,24 @@
-<div class="container-fluid"
-	th:fragment="comments" style="border-top: 1px solid #999; padding-top: 20px">
+<div
+	class="container-fluid"
+	th:fragment="comments"
+	style="border-top: 1px solid #999; padding-top: 20px">
 	<div class="form-group">
+
 		<textarea
 			id="comment"
 			class="form-control"
 			rows="5"></textarea>
-		<button
-			class="btn btn-primary"
-			onclick="postComment();">GÖNDER</button>
+
+		<div class="row myrow">
+			<div class="col-xs-6">
+				<div id="reCaptcha"></div>
+			</div>
+			<div class="col-xs-6 rightspan">
+				<button
+					class="btn btn-primary btn-lg pull-right"
+					onclick="postComment();">GÖNDER</button>
+			</div>
+		</div>
 	</div>
 	<div
 		class="media"

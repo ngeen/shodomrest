@@ -1,17 +1,36 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html
+	xmlns:th="http://www.thymeleaf.org"
 	layout:decorator="layout/default">
 <head>
-<title>Share For Freedom</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title th:text="${entry.title}"></title>
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8" />
 
-<link rel="stylesheet" th:href="@{/css/detail.css}" />
-<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta
+	name="description"
+	th:attr="content=${entry.title}" />
+<meta
+	name="keywords"
+	content="Video, Teknoloji, Haberler, Yenilikler" />
+<meta
+	name="author"
+	content="" />
+
+<link
+	rel="stylesheet"
+	th:href="@{/css/detail.css}" />
+<link
+	rel="stylesheet"
+	th:href="@{/css/font-awesome.min.css}" />
 <script th:src="@{/js/comment.js}"></script>
 <script th:src="@{/js/favorite.js}"></script>
 <script th:src="@{/js/facebook.js}"></script>
 
-<script async="true"
+<script
+	async="true"
 	src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
 	(adsbygoogle = window.adsbygoogle || []).push({});
@@ -23,11 +42,21 @@
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
-				<input type="hidden" id="entryId" th:value="${entry.id}" /> <input
-					type="hidden" id="userId" th:value="${user != null ? user.id : 0}" />
-				<input type="hidden" id="favorite" th:value="${favori}" />
+				<input
+					type="hidden"
+					id="entryId"
+					th:value="${entry.id}" />
+				<input
+					type="hidden"
+					id="userId"
+					th:value="${user != null ? user.id : 0}" />
+				<input
+					type="hidden"
+					id="favorite"
+					th:value="${favori}" />
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe th:src="@{${entry.link}}"
+					<iframe
+						th:src="@{${entry.link}}"
 						src="https://www.youtube.com/embed/reghyn9fmJQ"
 						class="embed-responsive-item" />
 				</div>
@@ -36,48 +65,46 @@
 					<small
 						th:text="${#calendars.format(entry.publishDate,'dd/MM/yyyy')}"></small>
 
-					<div class="fb-like pull-right" data-layout="button_count"
-						data-action="like" data-size="small" data-show-faces="true"
+					<div
+						class="fb-like pull-right"
+						data-layout="button_count"
+						data-action="like"
+						data-size="small"
+						data-show-faces="true"
 						data-share="true"></div>
 
-					<i sec:authorize="isAuthenticated()" id="favoriteBtn"
-						class="fa fa-star-o fa-lg pull-right" style="color: silver;"
-						onclick="postFavorite()"></i> <i sec:authorize="isAuthenticated()"
-						id="unFavoriteBtn" class="fa fa-star fa-lg pull-right"
-						style="color: gold;" onclick="postUnFavorite()"></i>
+					<i
+						sec:authorize="isAuthenticated()"
+						id="favoriteBtn"
+						class="fa fa-star-o fa-lg pull-right"
+						style="color: silver;"
+						onclick="postFavorite()"></i> <i
+						sec:authorize="isAuthenticated()"
+						id="unFavoriteBtn"
+						class="fa fa-star fa-lg pull-right"
+						style="color: gold;"
+						onclick="postUnFavorite()"></i>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 
-						<div class="content" th:remove="tag" th:utext="${entry.content}"></div>
+						<div
+							class="content"
+							th:remove="tag"
+							th:utext="${entry.content}"></div>
 						<h3>Yorum Yaz</h3>
-						<div style="border-top: 1px solid #999; padding-top: 20px"
-							class="container-fluid">
-							<div class="form-group">
-								<textarea id="comment" class="form-control" rows="5"></textarea>
-								<button class="btn btn-primary" onclick="postComment();">GÖNDER</button>
-							</div>
-							<div class="media" th:each="comment : ${comments}">
-								<div class="media-left">
-									<i class="fa fa-user-o fa-3x" aria-hidden="true"></i>
-								</div>
-								<div class="media-body">
-									<h4 class="media-heading" th:text="${comment.userName}">John
-										Doe</h4>
-									<p th:remove="tag" th:utext="${comment.comment}">Lorem
-										ipsum...</p>
-								</div>
-							</div>
-
-						</div>
+						<div th:replace="fragments/comments"></div>
 					</div>
 					<!--  div class="col-md-4"></div -->
 				</div>
 			</div>
 			<div class="col-md-2">
 				<div>
-					<ins class="adsbygoogle" style="display: block"
-						data-ad-client="ca-pub-6605932937338601" data-ad-slot="7081780276"
+					<ins
+						class="adsbygoogle"
+						style="display: block"
+						data-ad-client="ca-pub-6605932937338601"
+						data-ad-slot="7081780276"
 						data-ad-format="auto"></ins>
 				</div>
 			</div>

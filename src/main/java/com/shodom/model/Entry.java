@@ -12,6 +12,7 @@ public class Entry {
 	private String id;
 	private String title;
 	private String content;
+	private String plain;
 	private String link;
 	private String urlRoute;
 	private Boolean showFlg;
@@ -73,6 +74,14 @@ public class Entry {
 
 	public void setShowFlg(Boolean showFlg) {
 		this.showFlg = showFlg;
+	}
+
+	public String getPlain() {
+		return plain;
+	}
+
+	public void setPlain(String plain) {
+		this.plain = plain;
 	}
 
 }

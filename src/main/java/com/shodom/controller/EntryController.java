@@ -2,6 +2,8 @@ package com.shodom.controller;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -59,6 +61,7 @@ public class EntryController {
 	@PostMapping("/addPost")
     public String addEntryAction(@ModelAttribute Entry entry) {
 		entry.setUrlRoute(Converters.toEnglish(entry.getTitle()));
+		entry.setPlain(entry.getContent().replaceAll("\\<.*?\\>", ""));
 		entryRepository.addEntry(entry);
         return "redirect:/entry";
     }
@@ -66,6 +69,7 @@ public class EntryController {
 	@PostMapping("/editPost")
     public String editEntryAction(@ModelAttribute Entry entry) {
 		entry.setUrlRoute(Converters.toEnglish(entry.getTitle()));
+		entry.setPlain(entry.getContent().replaceAll("\\<.*?\\>", ""));
 		entryRepository.updateEntry(entry.getId(), entry);
         return "redirect:/entry";
     }
@@ -75,6 +79,7 @@ public class EntryController {
 		List<Entry> entryList = entryRepository.getAll(0, 1000);
 		for (Entry entry : entryList) {
 			entry.setUrlRoute(Converters.toEnglish(entry.getTitle()));
+			entry.setPlain(entry.getContent().replaceAll("\\<.*?\\>", ""));
 			entryRepository.updateEntry(entry.getId(), entry);
 		}
         return "redirect:/entry";

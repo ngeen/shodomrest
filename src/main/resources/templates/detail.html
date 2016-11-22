@@ -20,7 +20,7 @@
 	content="" />
 	
 <meta property="og:title" th:attr="content=${entry.title}"/>
-<meta property="og:description" th:attr="content=${#strings.replace(#strings.replace(entry.content,'&lt;p&gt;',''),'&lt;/p&gt;','')}"/>
+<meta property="og:description" th:attr="content=${entry.plain}"/>
 <meta property="og:url" th:attr="content=@{http://shodom.com/detail/{url}(url=${entry.urlRoute})}"/>
 <meta property="og:site_name" content="shodom.com"/>
 <!--meta property="og:image" content=""/-->

@@ -44,6 +44,12 @@
 							class="alert alert-danger col-sm-12"
 							th:if="${param.token}">Lütfen "Ben robot değilim"
 							işaretlediğinizden emin olunuz.</div>
+							
+						<div
+							id="login-alert"
+							class="alert alert-danger col-sm-12"
+							th:if="${param.null}">Lütfen bilgilerinizi eksiksiz girdiğinizden emin olunuz.</div>
+						
 
 						<form
 							id="loginform"

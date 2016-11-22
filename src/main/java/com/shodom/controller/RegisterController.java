@@ -41,6 +41,10 @@ public class RegisterController {
 		if (!recaptchaValidator.validate(webUser.getResponse()).isSuccess()) {
 			return "redirect:/register?token";
 		}
+		
+		if(webUser.getPassword().length() <= 0 || webUser.getUserMail().length() <= 0 || webUser.getUserName().length() <= 0){
+			return "redirect:/register?null";
+		}
 
 		GrantedAuthority roleUser=new SimpleGrantedAuthority("ROLE_USER");
 		List<GrantedAuthority> ga = new ArrayList<GrantedAuthority>();

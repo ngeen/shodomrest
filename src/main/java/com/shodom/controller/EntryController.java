@@ -1,5 +1,7 @@
 package com.shodom.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -67,4 +69,14 @@ public class EntryController {
 		entryRepository.updateEntry(entry.getId(), entry);
         return "redirect:/entry";
     }
+	
+	@GetMapping("/editAll")
+	public String editAll(){
+		List<Entry> entryList = entryRepository.getAll(0, 1000);
+		for (Entry entry : entryList) {
+			entry.setUrlRoute(Converters.toEnglish(entry.getTitle()));
+			entryRepository.updateEntry(entry.getId(), entry);
+		}
+        return "redirect:/entry";
+	}
 }

@@ -8,7 +8,7 @@ public class Converters {
 	
 	public static String toEnglish(String s) {
 		Locale enLocale = Locale.forLanguageTag("en_US");
-		return StringUtils.stripAccents(s.toUpperCase(enLocale)).toLowerCase(enLocale).replaceAll(" ", "-");
+		return StringUtils.stripAccents(s.toUpperCase(enLocale)).toLowerCase(enLocale).replaceAll("[^A-Za-z0-9 ]", "").replaceAll(" ", "-");
 	}
 
 }

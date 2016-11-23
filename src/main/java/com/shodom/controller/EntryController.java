@@ -1,9 +1,8 @@
 package com.shodom.controller;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.apache.commons.lang3.StringEscapeUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shodom.model.Entry;
 import com.shodom.repository.EntryRepository;
@@ -28,11 +26,19 @@ public class EntryController {
 	@Autowired
 	EntryRepository entryRepository;
 	
-	@GetMapping({"","/{page}"})
-	public String listEntries(@RequestParam(required = false, defaultValue = "0", value="page") Integer page, Model model){
-		int recordCount = 20;
-    	int realPage = page*recordCount;
-		model.addAttribute("entryList",entryRepository.getAll(realPage, recordCount));
+	@RequestMapping(value={"","/", "/{page}"},method=RequestMethod.GET)
+	public String listEntries(@PathVariable("page") Optional<Integer> page, Model model){
+		int activePage = 0;
+		if(page.isPresent()){
+			activePage = page.get() - 1;
+		}
+		int recordsPerPage = 20;
+    	int fromRecords = activePage*recordsPerPage;
+		model.addAttribute("entryList",entryRepository.getAll(fromRecords, recordsPerPage));
+		long recordCount = entryRepository.getCount();
+		long pageCount = (recordCount % 20 == 0) ? (recordCount / 20) : ((recordCount / 20)+1); 
+		model.addAttribute("pageCount", pageCount);
+		model.addAttribute("entryCount", recordCount);
 		return "entryList";
 	}
 	

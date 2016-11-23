@@ -87,4 +87,9 @@ public class EntryRepository {
 		    
 		return results;
 	}
+	
+	public long getCount(){
+		Query q = new Query();
+		return mongoTemplate.count(q, Entry.class);
+	}
 }

@@ -6,6 +6,7 @@
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script th:src="@{/js/tinyMceInit.js}"></script>
 <script th:src="@{/js/videoSource.js}"></script>
+<script th:src="@{/js/shareFacebook.js}"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
@@ -51,11 +52,15 @@
 				<!-- small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small -->
 			</div>
 			<div class="form-group checkbox">
-				<label> <input type="checkbox" th:field="*{showFlg}" /> Yayınla
+				<label> <input type="checkbox" th:field="*{showFlg}" />
+					Yayınla
 				</label>
 			</div>
-			<input type="submit" value="Submit" class="btn btn-primary" /> <input
-				type="reset" value="Reset" class="btn btn-primary" />
+			<input type="submit" value="Gönder" class="btn btn-primary" />
+			<button class="btn btn-primary" onclick="gonder()" >
+			Facebook'ta Yayınla
+			</button>
+			<input type="reset" value="İptal" class="btn btn-primary" />
 		</form>
 		<div class="row">
 			<div class="col-md-4"></div>

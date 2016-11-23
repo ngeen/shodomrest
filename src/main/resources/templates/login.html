@@ -1,30 +1,22 @@
 <!DOCTYPE html>
-<html
-	xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
 	layout:decorator="layout/default">
 <head>
 <title>Share For Freedom</title>
-<meta
-	http-equiv="Content-Type"
-	content="text/html; charset=UTF-8" />
-<link
-	rel="stylesheet"
-	th:href="@{/css/login.css}" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/login.css}" />
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" />
 </head>
 <body>
 
 	<section layout:fragment="content">
 
-		<div
-			th:if="${param.error}"
-			class="alert alert-danger">Yanlış kullanıcı adı veya şifre girdiniz</div>
-		<div
-			th:if="${param.logout}"
-			class="alert alert-info">Çıkış İşlemi yapıldı</div>
+		<div th:if="${param.error}" class="alert alert-danger">Yanlış
+			kullanıcı adı veya şifre girdiniz</div>
+		<div th:if="${param.logout}" class="alert alert-info">Çıkış
+			İşlemi yapıldı</div>
 		<div class="container">
-			<div
-				id="loginbox"
-				style="margin-top: 50px;"
+			<div id="loginbox" style="margin-top: 50px;"
 				class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 				<div class="panel panel-info">
 					<div class="panel-heading">
@@ -35,59 +27,45 @@
 						</div>
 					</div>
 
-					<div
-						style="padding-top: 30px"
-						class="panel-body">
+					<div style="padding-top: 30px" class="panel-body">
 
-						<div
-							style="display: none"
-							id="login-alert"
+						<div style="display: none" id="login-alert"
 							class="alert alert-danger col-sm-12"></div>
 
-						<form
-							id="loginform"
-							class="form-horizontal"
-							role="form"
-							th:action="@{/login}"
-							method="post">
+						<form id="loginform" class="form-horizontal" role="form"
+							th:action="@{/login}" method="post">
 
-							<div
-								style="margin-bottom: 25px"
-								class="input-group">
+							<div style="margin-bottom: 25px" class="input-group">
 								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-user"></i></span>
-								<input
-									id="login-username"
-									type="text"
-									class="form-control"
-									name="username"
-									value=""
-									placeholder="Kullanıcı Adı" />
+									class="glyphicon glyphicon-user"></i></span> <input
+									id="login-username" type="text" class="form-control"
+									name="username" value="" placeholder="Kullanıcı Adı" />
 							</div>
 
-							<div
-								style="margin-bottom: 25px"
-								class="input-group">
+							<div style="margin-bottom: 25px" class="input-group">
 								<span class="input-group-addon"><i
-									class="glyphicon glyphicon-lock"></i></span>
-								<input
-									id="login-password"
-									type="password"
-									class="form-control"
-									name="password"
-									placeholder="Şifre" />
+									class="glyphicon glyphicon-lock"></i></span> <input
+									id="login-password" type="password" class="form-control"
+									name="password" placeholder="Şifre" />
+							</div>
+
+							<div class="input-group">
+								<div class="checkbox">
+									<label style="font-size: 1em"> <input type="checkbox"
+										value="1" checked="true" name="remember-me" /> <span
+										class="cr"><i class="cr-icon fa fa-check"></i></span> Remember
+										me
+									</label>
+								</div>
 							</div>
 
 
-							<div
-								style="margin-top: 10px"
-								class="form-group">
+							<div style="margin-top: 10px" class="form-group">
 								<!-- Button -->
 
 								<div class="col-sm-12 controls">
 									<button id="btn-login" type="submit" class="btn btn-success">
-									Giriş Yap
-									</button>
+										Giriş Yap</button>
 
 								</div>
 							</div>
@@ -97,9 +75,8 @@
 								<div class="col-md-12 control">
 									<div
 										style="border-top: 1px solid #888; padding-top: 15px; font-size: 85%">
-										Kayıtlı Değil misiniz? <a
-											href="/register">
-											Burdan Kaydolun </a>
+										Kayıtlı Değil misiniz? <a href="/register"> Burdan
+											Kaydolun </a>
 									</div>
 								</div>
 							</div>

@@ -21,12 +21,29 @@ public class ShodomSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.formLogin().loginPage("/login").defaultSuccessUrl("/").and().logout().and().authorizeRequests()
+		// authorize requests
+		http.authorizeRequests()
 				.antMatchers("/", "/index", "/login", "/logout", "/403", "/css/**", "/js/**", "/fonts/**", "/ico/**",
 						"/locales/**", "/img/**", "/detail/**", "/register", "/getUser/**", "/addUser",
-						"/postComment/**","/listEntry/**")
-				.permitAll().anyRequest().authenticated().and().logout().logoutSuccessUrl("/").and().exceptionHandling()
-				.accessDeniedPage("/403").and().csrf().disable();
+						"/postComment/**", "/listEntry/**")
+				.permitAll().anyRequest().authenticated();
+
+		// login configuration
+		http.formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password")
+				.defaultSuccessUrl("/").defaultSuccessUrl("/");
+
+		// remember me configuration
+		http.rememberMe().key("remember-me").rememberMeParameter("remember-me")
+				.rememberMeCookieName("remember-me").tokenValiditySeconds(31536000);
+
+		// logout configuration
+		http.logout().logoutSuccessUrl("/");
+
+		// exception handling
+		http.exceptionHandling().accessDeniedPage("/403");
+		
+		// security
+		http.csrf().disable();
 
 	}
 

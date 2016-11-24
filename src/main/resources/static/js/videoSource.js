@@ -16,8 +16,8 @@ var postDownload = function() {
 	var fileName = $('#urlRoute').val();
 	
 	$.post("/download", {
-		"url" : url,
-		"filename" : fileName
+		"fileName" : fileName,
+		"url" : url
 	}).done(function(data) {
 		alert("başarılı");
 		console.log(data);

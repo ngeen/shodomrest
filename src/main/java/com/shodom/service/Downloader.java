@@ -9,9 +9,9 @@ import com.shodom.model.DownloadFile;
 @Service
 public class Downloader {
 
-	public String download(DownloadFile downloadFile, String cmd) throws Exception {
+	public String download(DownloadFile downloadFile) throws Exception {
 		String result = "";
-		//String cmd = "gifenc.sh "+downloadFile.getUrl() +" "+downloadFile.getFileName();
+		String cmd = "'bash /var/www/html/media/gifenc.sh "+downloadFile.getUrl() +" "+downloadFile.getFileName()+"'";
 		ProcessBuilder processBuilder = new ProcessBuilder("/usr/bin/bash", "-c" ,cmd);
 		processBuilder.redirectErrorStream(true);
 		final Process process = processBuilder.start();

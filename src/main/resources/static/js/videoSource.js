@@ -11,6 +11,21 @@ var changeSource = function(source) {
 	}
 }
 
+var postDownload = function() {
+	var url = $('#link').val();
+	var fileName = $('#urlRoute').val();
+	
+	var response = $.post("/download", {
+		"url" : url,
+		"filename" : filename
+	}).done(function(data) {
+		alert(data);
+		grecaptcha.reset(widgetCaptcha);
+	}).fail(function(data) {
+		alert(data);
+	}); 
+}
+
 
 var editLinkId = function(link){
 	$('#link').val(link);

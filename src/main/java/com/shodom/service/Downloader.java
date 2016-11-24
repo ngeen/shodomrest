@@ -1,7 +1,9 @@
 package com.shodom.service;
 
-import org.apache.commons.io.Charsets;
-import org.apache.commons.io.IOUtils;
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.PumpStreamHandler;
+import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.springframework.stereotype.Service;
 
 import com.shodom.model.DownloadFile;
@@ -10,16 +12,18 @@ import com.shodom.model.DownloadFile;
 public class Downloader {
 
 	public String download(DownloadFile downloadFile) throws Exception {
-		String result = "";
-		String[] cmd = {"/bin/bash", "-c", "'/var/www/html/media/gifenc.sh " + downloadFile.getUrl()+" "+ downloadFile.getFileName()+"'"};
-		ProcessBuilder processBuilder = new ProcessBuilder(cmd);
-		processBuilder.redirectErrorStream(true);
-		final Process process = processBuilder.start();
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		CommandLine commandLine = new CommandLine("/bin/sh");
+		commandLine.addArgument("-c");
+		commandLine.addArgument("/var/www/html/media/gifenc.sh");
+		commandLine.addArguments(downloadFile.getUrl());
+		commandLine.addArgument(downloadFile.getFileName());
+		
+		DefaultExecutor exec = new DefaultExecutor();
+	    PumpStreamHandler streamHandler = new PumpStreamHandler(outputStream);
+	    exec.setStreamHandler(streamHandler);
+	    exec.execute(commandLine);
 
-		result = IOUtils.toString(process.getInputStream(), Charsets.toCharset("UTF-8"));
-
-		process.waitFor();
-
-		return result;
+		return outputStream.toString("UTF-8");
 	}
 }

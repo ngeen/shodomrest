@@ -14,8 +14,7 @@ public class Downloader {
 
 	public String download(DownloadFile downloadFile) throws Exception {
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		CommandLine commandLine = new CommandLine("/bin/sh");
-		commandLine.addArgument("-c");
+		CommandLine commandLine = new CommandLine("/bin/bash");
 		commandLine.addArgument("/var/www/html/media/gifenc.sh");
 		commandLine.addArguments(downloadFile.getUrl());
 		commandLine.addArgument(downloadFile.getFileName());

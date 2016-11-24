@@ -19,10 +19,14 @@ var postDownload = function() {
 		"fileName" : fileName,
 		"url" : url
 	}).done(function(data) {
-		alert("başarılı");
+		if(data.includes("No such file or directory")){
+			alert("İndirme işleminde sorunla karşılaşıldı.");
+		}else{
+			alert("İndirme işlemi başarılı.");	
+		}
 		console.log(data);
 	}).fail(function(data) {
-		alert("başarısız");
+		alert("İndirme işleminde sorunla karşılaşıldı.");
 		console.log(data);
 	}); 
 }

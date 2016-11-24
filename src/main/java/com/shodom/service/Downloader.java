@@ -11,7 +11,7 @@ public class Downloader {
 
 	public String download(DownloadFile downloadFile) throws Exception {
 		String result = "";
-		ProcessBuilder processBuilder = new ProcessBuilder("/usr/bin/bash", "-c", "echo HELLO > myfile.txt");
+		ProcessBuilder processBuilder = new ProcessBuilder("/usr/bin/bash", "-c", "ls /var/www/html/media/ > myfile.txt");
 //		ProcessBuilder processBuilder = new ProcessBuilder("/usr/bin/bash", "/var/www/html/media/gifenc.sh",
 //				downloadFile.getUrl(), downloadFile.getFileName());
 		processBuilder.redirectErrorStream(true);

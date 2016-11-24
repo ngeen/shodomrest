@@ -15,14 +15,15 @@ var postDownload = function() {
 	var url = $('#link').val();
 	var fileName = $('#urlRoute').val();
 	
-	var response = $.post("/download", {
+	$.post("/download", {
 		"url" : url,
-		"filename" : filename
+		"filename" : fileName
 	}).done(function(data) {
-		alert(data);
-		grecaptcha.reset(widgetCaptcha);
+		alert("başarılı");
+		console.log(data);
 	}).fail(function(data) {
-		alert(data);
+		alert("başarısız");
+		console.log(data);
 	}); 
 }
 

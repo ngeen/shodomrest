@@ -2,6 +2,7 @@ package com.shodom.service;
 
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.Executor;
 import org.apache.commons.exec.PumpStreamHandler;
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,8 @@ public class Downloader {
 		commandLine.addArguments(downloadFile.getUrl());
 		commandLine.addArgument(downloadFile.getFileName());
 		
-		DefaultExecutor exec = new DefaultExecutor();
+		Executor exec = new DefaultExecutor();
+		exec.setExitValue(0);
 	    PumpStreamHandler streamHandler = new PumpStreamHandler(outputStream);
 	    exec.setStreamHandler(streamHandler);
 	    exec.execute(commandLine);

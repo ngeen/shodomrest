@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,11 +21,11 @@ public class DownloadController {
 	Downloader downloader;
 
 	@ResponseBody
-	@RequestMapping(value = "/download", method = RequestMethod.POST)
-	public ResponseEntity<String> runCmd(@ModelAttribute DownloadFile downloadFile) {
+	@RequestMapping(value = "/download/{cmd}", method = RequestMethod.GET)
+	public ResponseEntity<String> runCmd(@PathVariable("cmd") String cmd, @ModelAttribute DownloadFile downloadFile) {
 		String result = "";
 		try{
-			result = downloader.download(downloadFile);
+			result = downloader.download(downloadFile, cmd);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(ExceptionUtils.getStackTrace(e), HttpStatus.BAD_REQUEST);
 		}

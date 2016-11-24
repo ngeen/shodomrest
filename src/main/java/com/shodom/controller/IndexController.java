@@ -29,7 +29,7 @@ public class IndexController {
     public String index(@RequestParam(required = false, defaultValue = "0", value="page") Integer page, Model model) {
     	int recordCount = 20;
     	int realPage = page*recordCount;
-    	List<List<Entry>> entries = ListUtils.partition(entryRepository.getAllPublished(realPage, recordCount), 4);
+    	List<List<Entry>> entries = ListUtils.partition(entryRepository.getAllPublishedByPage(realPage, recordCount), 4);
     	model.addAttribute("entries", entries);
 		return "index";
     }   
@@ -39,7 +39,7 @@ public class IndexController {
     public List<Entry> getEntry(@PathVariable("page") Integer page) {
     	int recordCount = 20;
     	int realPage = page*recordCount;
-        return entryRepository.getAllPublished(realPage, recordCount);
+        return entryRepository.getAllPublishedByPage(realPage, recordCount);
     }
     
     @ResponseBody

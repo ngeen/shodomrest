@@ -34,7 +34,7 @@ public class EntryController {
 		}
 		int recordsPerPage = 20;
     	int fromRecords = activePage*recordsPerPage;
-		model.addAttribute("entryList",entryRepository.getAll(fromRecords, recordsPerPage));
+		model.addAttribute("entryList",entryRepository.getAllByPage(fromRecords, recordsPerPage));
 		long recordCount = entryRepository.getCount();
 		long pageCount = (recordCount % 20 == 0) ? (recordCount / 20) : ((recordCount / 20)+1); 
 		model.addAttribute("pageCount", pageCount);
@@ -82,7 +82,7 @@ public class EntryController {
 	
 	@GetMapping("/editAll")
 	public String editAll(){
-		List<Entry> entryList = entryRepository.getAll(0, 1000);
+		List<Entry> entryList = entryRepository.getAllByPage(0, 1000);
 		for (Entry entry : entryList) {
 			entry.setUrlRoute(Converters.toEnglish(entry.getTitle()));
 			entry.setPlain(entry.getContent().replaceAll("\\<.*?\\>", ""));

@@ -56,39 +56,49 @@ public class EntryRepository {
 
 		return mongoTemplate.findOne(q, Entry.class);
 	}
-	
-	public Entry getEntryByUrlRoute(String urlRoute){
+
+	public Entry getEntryByUrlRoute(String urlRoute) {
 		Query q = new Query();
 		q.addCriteria(Criteria.where("urlRoute").is(urlRoute));
 
 		return mongoTemplate.findOne(q, Entry.class);
 	}
 
-	public List<Entry> getAllPublished(int recordFrom, int recordCount){
-		
-	 	Query query = new Query();	 	
-	    query.skip(recordFrom);
-	    query.limit(recordCount);
-	    query.with(new Sort(new Order(Direction.DESC, "publishDate")));
-	    query.addCriteria(Criteria.where("showFlg").is(true));
-	    
-	    List<Entry> results = mongoTemplate.find(query, Entry.class);
-		    
+	public List<Entry> getAllPublishedByPage(int recordFrom, int recordCount) {
+
+		Query query = new Query();
+		query.skip(recordFrom);
+		query.limit(recordCount);
+		query.with(new Sort(new Order(Direction.DESC, "publishDate")));
+		query.addCriteria(Criteria.where("showFlg").is(true));
+
+		List<Entry> results = mongoTemplate.find(query, Entry.class);
+
 		return results;
 	}
-	
-	public List<Entry> getAll(int recordFrom, int recordCount){
-		
-	 	Query query = new Query();	 	
-	    query.skip(recordFrom);
-	    query.limit(recordCount);
-	    query.with(new Sort(new Order(Direction.ASC, "showFlg"),new Order(Direction.DESC, "publishDate")));
-	    List<Entry> results = mongoTemplate.find(query, Entry.class);
-		    
+
+	public List<Entry> getAllByPage(int recordFrom, int recordCount) {
+
+		Query query = new Query();
+		query.skip(recordFrom);
+		query.limit(recordCount);
+		query.with(new Sort(new Order(Direction.ASC, "showFlg"), new Order(Direction.DESC, "publishDate")));
+		List<Entry> results = mongoTemplate.find(query, Entry.class);
+
 		return results;
 	}
-	
-	public long getCount(){
+
+	public List<Entry> getAllPublished() {
+
+		Query query = new Query();
+		query.with(new Sort(new Order(Direction.ASC, "showFlg"), new Order(Direction.DESC, "publishDate")));
+		query.addCriteria(Criteria.where("showFlg").is(true));
+		List<Entry> results = mongoTemplate.find(query, Entry.class);
+
+		return results;
+	}
+
+	public long getCount() {
 		Query q = new Query();
 		return mongoTemplate.count(q, Entry.class);
 	}

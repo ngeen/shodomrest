@@ -13,8 +13,8 @@ public class Downloader {
 		String result = "";
 		String[] cmd = {"/bin/bash", "-c", "/var/www/html/media/gifenc.sh"};
 		ProcessBuilder processBuilder = new ProcessBuilder(cmd);
-		processBuilder.environment().put("link", downloadFile.getUrl());
-		processBuilder.environment().put("fileName", downloadFile.getFileName());
+		processBuilder.environment().put("l", downloadFile.getUrl());
+		processBuilder.environment().put("f", downloadFile.getFileName());
 		processBuilder.redirectErrorStream(true);
 		final Process process = processBuilder.start();
 

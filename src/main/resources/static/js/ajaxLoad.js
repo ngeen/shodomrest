@@ -36,8 +36,8 @@ $(document).ready(function() {
 						entryList += entryTemp(data[index]);
 
 						if (rowIndex % 4 == 0 || rowIndex >= data.length) {
-							var row = $("#rowTemplate").html();
-							$("section").append(row.format(entryList));
+							var row = $("#rowTemplate").html() + '<div class="clearfix visible-xs-block"> </div>';
+							$("#postsMain").append(row.format(entryList));
 							$('#loading').hide();
 							entryList = "";
 						}

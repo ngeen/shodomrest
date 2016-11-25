@@ -73,7 +73,7 @@ public class EntryController {
 		entry.setUrlRoute(Converters.toEnglish(entry.getTitle()));
 		entry.setPlain(entry.getContent().replaceAll("\\<.*?\\>", ""));
 		try {
-			if (entry.getGifImage().length() <= 0) {
+			if (entry.getGifImage() == null) {
 				DownloadFile df = new DownloadFile();
 				df.setUrl(entry.getLink());
 				df.setFileName(entry.getUrlRoute());
@@ -91,7 +91,7 @@ public class EntryController {
 		entry.setUrlRoute(Converters.toEnglish(entry.getTitle()));
 		entry.setPlain(entry.getContent().replaceAll("\\<.*?\\>", ""));
 		try {
-			if (entry.getGifImage().length() <= 0) {
+			if (entry.getGifImage() == null) {
 				DownloadFile df = new DownloadFile();
 				df.setUrl(entry.getLink());
 				df.setFileName(entry.getUrlRoute());
@@ -111,7 +111,7 @@ public class EntryController {
 			entry.setUrlRoute(Converters.toEnglish(entry.getTitle()));
 			entry.setPlain(entry.getContent().replaceAll("\\<.*?\\>", ""));
 			try {
-				if (entry.getGifImage().length() <= 0) {
+				if (entry.getGifImage() == null) {
 					DownloadFile df = new DownloadFile();
 					df.setUrl(entry.getLink());
 					df.setFileName(entry.getUrlRoute());
@@ -119,6 +119,7 @@ public class EntryController {
 					entry.setGifImage(df.getFileName() + ".gif");
 				}
 			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			entryRepository.updateEntry(entry.getId(), entry);
 		}

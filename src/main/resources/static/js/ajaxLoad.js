@@ -5,7 +5,8 @@ $(document).ready(function() {
 
 	var entryTemp = function(entry) {
 		var text = $("#entryTemplate").html();
-		text = text.format(entry.link, entry.title, entry.urlRoute);
+		var img = "http://media.shodom.com/"+entry.gifImage;
+		text = text.format(img, entry.title, entry.urlRoute);
 		return text;
 	}
 

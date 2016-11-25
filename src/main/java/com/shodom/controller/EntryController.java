@@ -112,6 +112,7 @@ public class EntryController {
 			entry.setPlain(entry.getContent().replaceAll("\\<.*?\\>", ""));
 			try {
 				if (entry.getGifImage() == null) {
+					System.out.println(entry.getUrlRoute());
 					DownloadFile df = new DownloadFile();
 					df.setUrl(entry.getLink());
 					df.setFileName(entry.getUrlRoute());

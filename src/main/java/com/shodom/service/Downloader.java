@@ -21,6 +21,10 @@ public class Downloader {
 		result = IOUtils.toString(process.getInputStream(), Charsets.toCharset("UTF-8"));
 
 		process.waitFor();
+		
+		if(result.contains("No such file or directory")){
+			return download(downloadFile);
+		}
 
 		return result;
 	}

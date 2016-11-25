@@ -16,6 +16,9 @@ public class Entry {
 	private String link;
 	private String urlRoute;
 	private Boolean showFlg;
+	private String source;
+	private String gifImage;
+	
 	
 	@CreatedDate
 	private DateTime publishDate;
@@ -82,6 +85,22 @@ public class Entry {
 
 	public void setPlain(String plain) {
 		this.plain = plain;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
+
+	public String getGifImage() {
+		return gifImage;
+	}
+
+	public void setGifImage(String gifImage) {
+		this.gifImage = gifImage;
 	}
 
 }

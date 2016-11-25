@@ -20,8 +20,7 @@ var postDownload = function() {
 		"url" : url
 	}).done(function(data) {
 		if(data.includes("No such file or directory")){
-			//alert("İndirme işleminde sorunla karşılaşıldı.");
-			postDownload();
+			alert("İndirme işleminde sorunla karşılaşıldı.");
 		}else{
 			alert("İndirme işlemi başarılı.");	
 		}

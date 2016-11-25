@@ -46,6 +46,8 @@ public class EntryRepository {
 		update.set("urlRoute", e.getUrlRoute());
 		update.set("showFlg", e.getShowFlg());
 		update.set("plain", e.getPlain());
+		update.set("gifImage", e.getGifImage());
+		update.set("source", e.getSource());
 
 		return mongoTemplate.findAndModify(q, update, Entry.class);
 	}

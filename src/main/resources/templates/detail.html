@@ -28,14 +28,12 @@
 
 <meta property="fb:app_id" content="139369366543868"/>
 
-<meta name="twitter:card" content="player" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@ShodomCom" />
 <meta name="twitter:creator" content="@ShodomCom" />
-<meta name="twitter:player:width" content="320" />
-<meta name="twitter:player:height" content="240" />
 <meta name="twitter:title" th:attr="content=${entry.title}" />
 <meta name="twitter:description" th:attr="content=${entry.plain}" />
-<meta name="twitter:player" th:attr="content=@{http://media.shodom.com/{gif}(gif=${entry.gifImage})}" />
+<meta name="twitter:image" th:attr="content=@{http://media.shodom.com/{gif}(gif=${entry.gifImage})}" />
 
  
 <link

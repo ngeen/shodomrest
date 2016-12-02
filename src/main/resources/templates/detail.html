@@ -24,7 +24,7 @@
 <meta property="og:description" th:attr="content=${entry.plain}"/>
 <meta property="og:url" th:attr="content=@{http://shodom.com/detail/{url}(url=${entry.urlRoute})}"/>
 <meta property="og:site_name" content="shodom.com"/>
-<meta property="og:image" th:attr="content=@{http://media.shodom.com/{gif}(gif=${entry.gifImage})}"/>
+<meta property="og:image" th:attr="content=@{http://media.shodom.com/{gif}?crop=6(gif=${entry.gifImage})}"/>
 
 <meta property="fb:app_id" content="139369366543868"/>
 

@@ -33,10 +33,10 @@
 <meta name="twitter:creator" content="@ShodomCom" />
 <meta name="twitter:title" th:attr="content=${entry.title}" />
 <meta name="twitter:description" th:attr="content=${entry.plain}" />
-<meta name="twitter:image" th:attr="content=@{http://media.shodom.com/{gif}(gif=${entry.gifImage})}" />
+<meta name="twitter:image" th:attr="content=@{http://media.shodom.com/{gif}?crop=5(gif=${entry.gifImage})}" />
 
  
-<link
+<link 
 	rel="stylesheet"
 	th:href="@{/css/detail.css}" />
 <link
